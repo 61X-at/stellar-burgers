@@ -9,7 +9,7 @@ import { newOrderSlice } from './slices/newOrder';
 import { constructorSlice } from './slices/constructor';
 import { userSlice } from './slices/user';
 import { userOrdersSlice } from './slices/userOrder';
-import { ingredientsSlice } from './slices/Ingredients';
+import { ingredientsSlice } from './slices/ingredients';
 
 const store = configureStore({
   reducer: {

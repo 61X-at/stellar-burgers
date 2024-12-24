@@ -192,7 +192,7 @@ export const forgotPasswordApi = (data: { email: string }) =>
     },
     body: JSON.stringify(data)
   })
-    .then((res) => checkResponse<TServerResponse<{object}>>(res))
+    .then((res) => checkResponse<TServerResponse<object>>(res))
     .then((data) => {
       if (data?.success) return data;
       return Promise.reject(data);
@@ -206,7 +206,7 @@ export const resetPasswordApi = (data: { password: string; token: string }) =>
     },
     body: JSON.stringify(data)
   })
-    .then((res) => checkResponse<TServerResponse<{object}>>(res))
+    .then((res) => checkResponse<TServerResponse<object>>(res))
     .then((data) => {
       if (data?.success) return data;
       return Promise.reject(data);

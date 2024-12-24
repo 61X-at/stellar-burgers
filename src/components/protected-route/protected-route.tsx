@@ -3,28 +3,26 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from '../../services/store';
 import { isAuthCheckedSelector } from '../../services/slices/user';
 
-
 type ProtectedRouteProps = {
-    onlyUnAuth?: boolean;
-    children: React.ReactElement;
+  onlyUnAuth?: boolean;
+  children: React.ReactElement;
 };
 
-
 export const ProtectedRoute = ({
-    onlyUnAuth = false,
-    children
+  onlyUnAuth = false,
+  children
 }: ProtectedRouteProps) => {
-    const isAuthChecked = useSelector(isAuthCheckedSelector);
-    const location = useLocation();
+  const isAuthChecked = useSelector(isAuthCheckedSelector);
+  const location = useLocation();
 
-    if (!onlyUnAuth && !isAuthChecked) {
-        return <Navigate replace to='/login' state={{ from: location }} />;
-    }
+  if (!onlyUnAuth && !isAuthChecked) {
+    return <Navigate replace to='/login' state={{ from: location }} />;
+  }
 
-    if (onlyUnAuth && isAuthChecked) {
-        const fromPage = location.state?.from || { pathname: '/' };
+  if (onlyUnAuth && isAuthChecked) {
+    const fromPage = location.state?.from || { pathname: '/' };
 
-        return <Navigate replace to={fromPage} />;
-    }
-    return children;
+    return <Navigate replace to={fromPage} />;
+  }
+  return children;
 };
